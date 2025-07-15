@@ -44,7 +44,7 @@ SpecFlowPhotoGallery.Specs/
    ```sh
    dotnet test
    ```
-   This will launch Chrome, maximize the window, and execute the SpecFlow scenarios.
+This will launch Chrome, maximize the window, and execute the SpecFlow scenarios.
 
 
 ### ...or simply use the Visual Studio Test Explorer and hotkeys
@@ -70,6 +70,48 @@ SpecFlowPhotoGallery.Specs/
 - Ensure your Chrome browser is up to date to match the ChromeDriver version.
 - If you encounter issues with element selectors, check the HTML structure and update the Page Object selectors accordingly.
 - For headless execution, you can modify `WebDriverContext` to add ChromeOptions with headless mode.
+
+---
+
+# SpecFlow LivingDoc HTML Report
+
+## How to Generate the LivingDoc HTML Report
+
+1. **Run your tests:**
+```sh
+dotnet test
+```
+
+This will generate a test execution JSON file (usually in the `TestResults` folder).
+
+2. **Install the LivingDoc CLI tool (if not already installed):**
+```sh
+dotnet tool install --global SpecFlow.Plus.LivingDoc.CLI
+```
+
+Or update it:
+
+```sh
+dotnet tool update --global SpecFlow.Plus.LivingDoc.CLI
+```
+
+3. **Generate the HTML report:**
+
+```sh
+dotnet livingdoc test-assembly --output LivingDoc.html SpecFlowPhotoGallery.Specs/bin/Debug/net8.0/SpecFlowPhotoGallery.Specs.dll
+```
+
+This will create a `LivingDoc.html` file in your current directory.
+
+
+## What is LivingDoc?
+- LivingDoc is a rich HTML report for SpecFlow projects.
+- It shows feature files, scenarios, step results, and execution details in a user-friendly format.
+
+## Notes
+- You must run your tests first so that the execution data is available.
+- The generated `LivingDoc.html` can be opened in any browser and shared with your team.
+- For more options, see the [SpecFlow LivingDoc documentation](https://docs.specflow.org/projects/livingdoc/en/latest/).
 
 ---
 
