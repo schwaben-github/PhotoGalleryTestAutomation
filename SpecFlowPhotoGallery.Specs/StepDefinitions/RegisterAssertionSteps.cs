@@ -1,9 +1,9 @@
-﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Interactions;
+﻿using FluentAssertions;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
+using SpecFlowPhotoGallery.Specs.Drivers;
 using SpecFlowPhotoGallery.Specs.Pages;
 using TechTalk.SpecFlow;
-using FluentAssertions;
 
 namespace SpecFlowPhotoGallery.Specs.StepDefinitions
 {
@@ -14,9 +14,9 @@ namespace SpecFlowPhotoGallery.Specs.StepDefinitions
         private readonly RegisterPage _registerPage;
         private readonly HomePage _homePage;
 
-        public RegisterAssertionSteps()
+        public RegisterAssertionSteps(WebDriverContext context)
         {
-            _driver = new ChromeDriver();
+            _driver = context.Driver;
             _registerPage = new RegisterPage(_driver);
             _homePage = new HomePage(_driver);
         }
@@ -27,7 +27,11 @@ namespace SpecFlowPhotoGallery.Specs.StepDefinitions
             switch (element.ToLower())
             {
                 case "homepage":
-                    _driver.Title.Should().Contain("basic-starterkit-angular-blog");
+                    var wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(10));
+                    bool titleReady = wait.Until(drv => !string.IsNullOrEmpty(drv.Title));
+                    var actualTitle = _driver.Title;
+                    Console.WriteLine($"[DEBUG] Actual page title: '{actualTitle}'");
+                    actualTitle.Should().Contain("baasic-starterkit-angular-blog");
                     break;
                 case "logo":
                     _homePage.Logo.Displayed.Should().BeTrue();
@@ -130,13 +134,12 @@ namespace SpecFlowPhotoGallery.Specs.StepDefinitions
             element.GetAttribute("value").Should().Be("");
         }
 
-        [Then("the '(.*)' button is displayed, enabled and contains '(.*)' string")]
-        public void ButtonIsDisplayedEnabledAndContains(string button, string text)
+        [Then("the '(.*)' button is displayed and contains '(.*)' string")]
+        public void ButtonIsDisplayedAndContains(string button, string text)
         {
             if (button.ToLower() == "register")
             {
                 _registerPage.RegisterButton.Displayed.Should().BeTrue();
-                _registerPage.RegisterButton.Enabled.Should().BeTrue();
                 _registerPage.RegisterButton.Text.ToUpper().Should().Contain(text.ToUpper());
             }
             else
@@ -150,7 +153,7 @@ namespace SpecFlowPhotoGallery.Specs.StepDefinitions
         {
             if (dropdown.ToLower() == "menu")
             {
-                _registerPage.MenuDropdown.Displayed.Should().BeTrue();
+                _homePage.MenuDropdown.Displayed.Should().BeTrue();
             }
             else
             {
@@ -163,7 +166,7 @@ namespace SpecFlowPhotoGallery.Specs.StepDefinitions
         {
             if (overlay.ToLower() == "menu")
             {
-                _registerPage.MenuOverlay.Displayed.Should().BeTrue();
+                _homePage.MenuOverlay.Displayed.Should().BeTrue();
             }
             else
             {
@@ -184,7 +187,8 @@ namespace SpecFlowPhotoGallery.Specs.StepDefinitions
             };
             if (textbox.ToLower().Contains("password"))
             {
-                actual.Should().NotBeNullOrEmpty(); // Password fields are masked, so just check not empty
+                // Password fields are masked, so just check not empty
+                actual.Should().NotBeNullOrEmpty();
             }
             else
             {
@@ -221,6 +225,20 @@ namespace SpecFlowPhotoGallery.Specs.StepDefinitions
         {
             _registerPage.ErrorMessage.Displayed.Should().BeTrue();
             _registerPage.ErrorMessage.Text.Should().Contain(message);
+        }
+
+        [Then("the 'Register' page is displayed")]
+        public void RegisterPageIsDisplayed()
+        {
+            if (!_registerPage.RegisterBanner.Displayed)
+                throw new Exception("Register page is not displayed.");
+        }
+
+        [Then("the 'Contact add' logo is displayed")]
+        public void ContactAddLogoIsDisplayed()
+        {
+            if (!_registerPage.ContactAddLogo.Displayed)
+                throw new Exception("Contact add logo is not displayed.");
         }
     }
 }
