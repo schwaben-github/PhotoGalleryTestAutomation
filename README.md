@@ -102,7 +102,7 @@ dotnet tool update --global SpecFlow.Plus.LivingDoc.CLI
 3. **Generate the HTML report:**
 
 ```sh
-dotnet livingdoc test-assembly --output LivingDoc.html SpecFlowPhotoGallery.Specs/bin/Debug/net8.0/SpecFlowPhotoGallery.Specs.dll
+livingdoc test-assembly bin\Debug\net8.0\SpecFlowPhotoGallery.Specs.dll -t bin\Debug\net8.0\TestExecution.json -o LivingDoc.html
 ```
 
 This will create a `LivingDoc.html` file in your current directory.
