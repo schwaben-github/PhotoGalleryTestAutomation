@@ -35,7 +35,8 @@ namespace SpecFlowPhotoGallery.Specs.Features
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Register on Baasic Demo Site", null, ProgrammingLanguage.CSharp, featureTags);
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Register on Baasic Demo Site", "This feature file frames the process of registering a new user on the Baasic Demo" +
+                    " Site.\r\n  In order to use the Baasic Demo Site.", ProgrammingLanguage.CSharp, featureTags);
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -75,12 +76,16 @@ namespace SpecFlowPhotoGallery.Specs.Features
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Register with mismatched passwords")]
+        [NUnit.Framework.CategoryAttribute("TC008")]
+        [NUnit.Framework.CategoryAttribute("Registration")]
         public void RegisterWithMismatchedPasswords()
         {
-            string[] tagsOfScenario = ((string[])(null));
+            string[] tagsOfScenario = new string[] {
+                    "TC008",
+                    "Registration"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Register with mismatched passwords", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 3
+#line 6
   this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -90,98 +95,98 @@ namespace SpecFlowPhotoGallery.Specs.Features
             else
             {
                 this.ScenarioStart();
-#line 4
+#line 7
     testRunner.Given("I open the start page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 5
+#line 8
     testRunner.Then("the \'Homepage\' is displayed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 6
+#line 9
     testRunner.And("the \'Logo\' is displayed in the top left corner", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 8
+#line 11
     testRunner.When("I hover over the \'Logo\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 9
+#line 12
     testRunner.Then("the \'Menu\' dropdown is displayed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 11
+#line 14
     testRunner.When("I click on the \'MENU\' link", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 12
+#line 15
     testRunner.Then("the \'Menu\' overlay is displayed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 14
+#line 17
     testRunner.When("I click on the Register link", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 15
+#line 18
     testRunner.Then("the \'Register\' page is displayed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 16
+#line 19
     testRunner.And("the \'Logo\' is displayed in the top left corner of the \'Register\' page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 17
+#line 20
     testRunner.And("the \'Contact add\' logo is displayed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 18
+#line 21
     testRunner.And("the \'Register\' banner is displayed and contains \'Register\' string", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 19
+#line 22
     testRunner.And("the \'Email\' banner is displayed and contains \'Email\' string", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 20
+#line 23
     testRunner.And("the \'Email\' textbox is displayed, enabled, and empty", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 21
+#line 24
     testRunner.And("the \'Username\' banner is displayed and contains \'Username\' string", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 22
+#line 25
     testRunner.And("the \'Username\' textbox is displayed, enabled and empty", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 23
+#line 26
     testRunner.And("the \'Password\' banner is displayed and contains \'Password\' string", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 24
+#line 27
     testRunner.And("the \'Password\' textbox is displayed, enabled and empty", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 25
+#line 28
     testRunner.And("the \'Confirm password\' banner is displayed and contains \'Confirm Password\' string" +
                         "", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 26
+#line 29
     testRunner.And("the \'Confirm password\' textbox is displayed, enabled, and empty", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 27
+#line 30
     testRunner.And("the \'Register\' button is displayed and contains \'REGISTER\' string", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 29
+#line 32
     testRunner.When("I enter \'tibor.weigand@gmail.com\' into the \'Email\' textbox", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 30
+#line 33
     testRunner.Then("the \'Email\' textbox contains \'tibor.weigand@gmail.com\' string", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 32
+#line 35
     testRunner.When("I enter \'tiborle\' into the \'Username\' textbox", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 33
+#line 36
     testRunner.Then("the \'Username\' textbox contains \'tiborle\' string", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 35
+#line 38
     testRunner.When("I enter \'elrobit\' into the \'Password\' textbox", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 36
+#line 39
     testRunner.Then("the \'Password\' textbox contains an anonymized password", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 38
+#line 41
     testRunner.When("I enter \'elrobit123\' into the \'Confirm Password\' textbox", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 39
+#line 42
     testRunner.Then("the \'Confirm Password\' textbox contains an anonymized password", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 41
+#line 44
     testRunner.When("I click on the Register button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 42
+#line 45
     testRunner.Then("the error message \'Passwords do not match.\' is displayed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }

@@ -119,4 +119,41 @@ This will create a `LivingDoc.html` file in your current directory.
 
 ---
 
+## PhotoGalleryTestAutomation
+
+### Automated LivingDoc Generation
+
+This project uses SpecFlow with .NET 8 and generates LivingDoc documentation for your BDD scenarios.
+
+### How to Run Tests and Generate LivingDoc
+
+1. **Run the provided script:**
+   - Use the `run-tests-with-livingdoc.bat` script in the root directory to run your tests and automatically generate the LivingDoc HTML report.
+   - The script will:
+     - Run all tests in the `SpecFlowPhotoGallery.Specs` project.
+     - Generate `TestExecution.json` (required for LivingDoc).
+     - Create/update `LivingDoc.html` in the `SpecFlowPhotoGallery.Specs` directory.
+
+   **Usage:**
+   ```cmd
+   run-tests-with-livingdoc.bat
+   ```
+
+2. **View the documentation:**
+   - Open `SpecFlowPhotoGallery.Specs\LivingDoc.html` in your browser to see the latest LivingDoc report.
+
+### Requirements
+- .NET 8 SDK
+- LivingDoc CLI installed globally:
+  ```cmd
+  dotnet tool install --global SpecFlow.Plus.LivingDoc.CLI
+  ```
+- Chrome browser (for Selenium tests)
+
+### Notes
+- The LivingDoc will not be generated automatically by `dotnet test` alone. Always use the provided script for full automation.
+- If you add or change features, simply re-run the script to update the documentation.
+
+---
+
 Feel free to contribute or open issues for improvements!
